@@ -8,8 +8,10 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<ul th:each="category : ${categories}">
-    <li th:text="${category.name}"></li>
+<p th:unless="${categories} and ${categories.size()}">no categories</p>
+
+<ul th:if="${categories} and ${categories.size()}">
+    <li th:each="category : ${categories}" th:text="${category.name}"></li>
 </ul>
 
 <button onclick="location.href = '/category/add';">Add Category</button>
